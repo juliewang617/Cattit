@@ -33,3 +33,5 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+/Users/juliewang/Desktop/projects/react-native-projects/Cattit/src/utilities/config.js
