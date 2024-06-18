@@ -10,6 +10,9 @@ A social media app for Cat Lovers, created with React Native. This app helped me
 
 ![Simulator Screenshot - iPhone SE (3rd generation) - 2024-06-18 at 13 43 10](https://github.com/juliewang617/Cattit/assets/63472687/a762f4e0-5408-4441-a870-63c9d48bc6f4)
 
+![Simulator Screenshot - iPhone SE (3rd generation) - 2024-06-18 at 13 47 59](https://github.com/juliewang617/Cattit/assets/63472687/b29b40e5-a680-4da2-be8c-63a1cb8f1a2e)
+
+
 
 
 
