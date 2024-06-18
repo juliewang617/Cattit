@@ -1,4 +1,4 @@
-A social media app for Cat Lovers, created with React Native. This app helped me understand the basics of React Native, authentication with Firebase, and data storage with Firestore. 
+A social media app for Cat Lovers, created with React Native. This app helped me understand the basics of React Native, authentication with Firebase, and data storage with Firestore. There is also a "Daily Cat Fact" feature which uses the Cat Facts API and Cat Images API to generate a random cat image and fact. 
 
 ![Simulator Screenshot - iPhone SE (3rd generation) - 2024-06-18 at 13 29 36](https://github.com/juliewang617/Cattit/assets/63472687/4875e0a2-5949-4c95-bce3-1114cf740225)
 
