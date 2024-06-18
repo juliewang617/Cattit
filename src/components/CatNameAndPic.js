@@ -1,20 +1,18 @@
-import { Text, SafeAreaView, View, Image, StyleSheet, Pressable} from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import Icon from 'react-native-vector-icons/FontAwesome5';
-import { useContext, useState } from "react";
-import { db } from "../utilities/config";
-import {  addDoc, setDoc, doc, collection, updateDoc, getCountFromServer  } from "firebase/firestore";
-import styles from "/Users/juliewang/Desktop/projects/react-native-projects/Cattit/src/utilities/Style.js";
+import { Text, View, Image, StyleSheet, Pressable} from "react-native";
+import styles from "/Users/juliewang/Desktop/projects/react-native/Cattit/src/utilities/Style.js";
 
 export default function CatNameAndPic(props){
 
-    const {details, image, name} = props.item
+    const {nav, ...rest} = props.item
+    const {uid, details, image, name, album} = rest
 
     return(
-        <View>
-            <Text>{name}</Text>
-            <Image src={image} style={catNameAndPicStyles.image}/>
-        </View>
+        <Pressable onPress={() => nav.navigate('Cat', data=rest)}>
+            <View>
+                <Text style={catNameAndPicStyles.text}>{name}</Text>
+                <Image src={image} style={catNameAndPicStyles.image}/>
+            </View>
+        </Pressable>
     )
 }
 
@@ -27,9 +25,8 @@ export default function CatNameAndPic(props){
             backgroundColor: 'lightgray', 
         },
         text: {
-            color: 'black', 
             textAlign: 'center', 
-            marginBottom: 10, 
-            fontWeight: 'bold', 
+            marginBottom: 5, 
+            ...styles.text
         }, 
     });

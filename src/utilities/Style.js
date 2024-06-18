@@ -5,15 +5,16 @@ export default StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
       },
+    text: {
+        color: '#535353'
+    },
+    coloredText: {
+         color: "#6B26AF"
+    },
     input: {
-        height: 40, 
-        width: 'auto', 
-        marginTop: 20, 
-        marginBottom: 12,
-        borderWidth: 1, 
-        padding: 10, 
-        borderColor: 'gray',
-        borderRadius: 5, 
+        padding: 10,
+        borderColor: '#535353', 
+        borderRadius: 5,
     },
     button: {
         borderRadius: 10, 
@@ -22,9 +23,18 @@ export default StyleSheet.create({
         padding: 10, 
         alignItems: 'center', 
         justifyContent: 'center', 
-        backgroundColor: 'black', 
+        backgroundColor: '#6B26AF', 
         alignSelf: 'center',
         marginTop: 10
+    },
+    pinkButton: {
+        width: 150, 
+        padding: 8, 
+        alignItems: 'center', 
+        alignSelf: 'center',
+        marginBottom: 10,
+        backgroundColor: '#F6AFEB',
+        borderRadius: 10, 
     },
     buttonText: {
         color: 'white'

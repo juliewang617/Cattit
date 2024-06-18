@@ -3,7 +3,7 @@ import { View, Text, TextInput, SafeAreaView, StyleSheet, Pressable } from "reac
 import { db, auth } from "../utilities/config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from 'firebase/firestore'; 
-import styles from "/Users/juliewang/Desktop/projects/react-native-projects/Cattit/src/utilities/Style.js"; 
+import styles from "/Users/juliewang/Desktop/projects/react-native/Cattit/src/utilities/Style.js"; 
 
 export default function SignupScreen(){
 

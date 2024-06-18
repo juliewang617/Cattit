@@ -5,7 +5,7 @@ import { doc, updateDoc, getDocs, collection } from "firebase/firestore";
 import { signOut } from "firebase/auth";
 import UserContext from "../components/UserContext";
 import * as ImagePicker from 'expo-image-picker'; 
-import styles from "/Users/juliewang/Desktop/projects/react-native-projects/Cattit/src/utilities/Style.js"; 
+import styles from "/Users/juliewang/Desktop/projects/react-native/Cattit/src/utilities/Style.js"; 
 import { useNavigation } from '@react-navigation/native';
 import CatNameAndPic from "../components/CatNameAndPic";
 
@@ -23,7 +23,11 @@ export default function ProfileScreen(){
         const getCats = async () => {
             const docSnap = await getDocs(collection(db, "userinfo", uid, "cats")); 
             setCatData(
-                docSnap.docs.map(docu => (docu.data()))
+                docSnap.docs.map(docu => ({
+                    ...docu.data(), 
+                    nav: navigation, 
+                    profile_uid: uid
+                }))
             ); 
         }
 
@@ -82,7 +86,7 @@ export default function ProfileScreen(){
                 renderItem={CatNameAndPic}
                 ListEmptyComponent={<Text>Add your cat!</Text>}
                 ItemSeparatorComponent={<View style={{width: 20}} />}/>
-                <Pressable style={styles.button} onPress={() => navigation.navigate("Add a Cat")}>
+                <Pressable style={profileStyles.addCatButton} onPress={() => navigation.navigate("Add a Cat")}>
                     <Text style={styles.buttonText}>Add a cat</Text>
                 </Pressable>
             </View>
@@ -93,8 +97,7 @@ export default function ProfileScreen(){
 const profileStyles = StyleSheet.create({
     container: {
       alignItems: 'center',
-      justifyContent: 'center',
-      ...styles.container
+      ...styles.container,
     },
     pfp: {
         width: 90, 
@@ -102,28 +105,37 @@ const profileStyles = StyleSheet.create({
         marginBottom: 20, 
         alignSelf: 'center', 
         borderRadius: 10, 
-        backgroundColor: 'lightgray', 
+        backgroundColor: '#FFD7E7', 
     },
     text: {
         color: 'black', 
         textAlign: 'center', 
         marginBottom: 10, 
         fontWeight: 'bold', 
+        ...styles.coloredText
     }, 
     pfpButtonsContainer: {
+        marginTop: 50, 
         display: 'flex',
         flexDirection: 'row',
     },
-    myCatsSection: {
-        borderTopWidth: 0.5,
+    myCatsSection: { 
         marginTop: 20,
         paddingTop: 20, 
-        height: '40%',
-        width: '100%',
-        alignItems: 'center'
+        height: 300,
+        paddingLeft: 50, 
+        paddingRight: 50, 
+        borderRadius: 20, 
+        alignItems: 'center',
+        backgroundColor: '#FFD7E7'
     },
     myCatsTitle: {
         fontWeight: 'bold',
-        marginBottom: 20
+        marginBottom: 20,
+        ...styles.coloredText
+    }, 
+    addCatButton: {
+        marginBottom: 40, 
+        ...styles.button
     }
 });

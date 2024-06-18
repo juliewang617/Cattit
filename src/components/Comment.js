@@ -1,10 +1,5 @@
-import { Text, SafeAreaView, View, Image, StyleSheet, Pressable} from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import Icon from 'react-native-vector-icons/FontAwesome5';
-import { useContext, useState } from "react";
-import { db } from "../utilities/config";
-import {  addDoc, setDoc, doc, collection, updateDoc, getCountFromServer  } from "firebase/firestore";
-import styles from "/Users/juliewang/Desktop/projects/react-native-projects/Cattit/src/utilities/Style.js";
+import { Text, View, StyleSheet} from "react-native";
+import styles from "/Users/juliewang/Desktop/projects/react-native/Cattit/src/utilities/Style.js";
 
 export default function Comment(props){
 

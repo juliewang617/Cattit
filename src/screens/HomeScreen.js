@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { db } from "../utilities/config";
 import { FlatList } from "react-native";
 import Post from "../components/Post";
-import styles from "/Users/juliewang/Desktop/projects/react-native-projects/Cattit/src/utilities/Style.js"; 
+import styles from "/Users/juliewang/Desktop/projects/react-native/Cattit/src/utilities/Style.js"; 
 
 export default function HomeScreen({ navigation }){
 
@@ -57,7 +57,7 @@ const homeScreenStyles = StyleSheet.create({
         margin: 20, 
     },
     postDivider: {
-        borderBottomColor: 'black',
+        borderBottomColor: '#4e5370',
         borderBottomWidth: 0.5,
         marginTop: 10, 
         marginBottom: 10, 

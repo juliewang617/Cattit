@@ -4,7 +4,7 @@ import { setDoc, doc, collection } from "firebase/firestore";
 import { useContext, useState } from 'react';
 import { db } from "../utilities/config";
 import UserContext from "../components/UserContext";
-import styles from "/Users/juliewang/Desktop/projects/react-native-projects/Cattit/src/utilities/Style.js"; 
+import styles from "/Users/juliewang/Desktop/projects/react-native/Cattit/src/utilities/Style.js"; 
 
 export default function MakePostScreen({navigation}){
 
@@ -39,6 +39,7 @@ export default function MakePostScreen({navigation}){
                 newPostRef,
                 {
                     body: body, 
+                    uid: uid, 
                     image: image, 
                     op: username, 
                     title: title, 
@@ -62,20 +63,21 @@ export default function MakePostScreen({navigation}){
             <View>
                 <Image src={image} style={homeScreenStyles.image} />
 
-                <Text>Title</Text>
+                <Text style={styles.text}>Title</Text>
                 <TextInput style={homeScreenStyles.titleInput}
                 onChangeText={setTitle}
                 value = {title} 
                 maxLength={50}/>
 
-                <Text>Body</Text>
+                <Text style={styles.text}>Body</Text>
                 <TextInput style={homeScreenStyles.bodyInput}
                 onChangeText={setBody}
                 value={body}
+                multiline={true}
                 maxLength={200} />
 
-                <Pressable style={styles.button} onPress={handleUploadImage}> 
-                    <Text style={styles.buttonText}>Upload image</Text>
+                <Pressable style={styles.pinkButton} onPress={handleUploadImage}> 
+                    <Text style={styles.text}>Upload image</Text>
                 </Pressable>
                 
                 <Pressable style={styles.button} onPress={handleMakePost}> 
@@ -100,7 +102,7 @@ const homeScreenStyles = StyleSheet.create({
         marginBottom: 20, 
         alignSelf: 'center', 
         borderRadius: 10, 
-        backgroundColor: 'lightgray', 
+        backgroundColor: '#FFD7E7', 
     },
     titleInput: {
         height: 40, 
@@ -108,7 +110,9 @@ const homeScreenStyles = StyleSheet.create({
         marginTop: 12, 
         marginBottom: 12,
         borderWidth: 1, 
-        padding: 10
+        padding: 10,
+        borderColor: '#535353', 
+        borderRadius: 5
     },
     bodyInput: {
         height: 100, 
@@ -116,6 +120,6 @@ const homeScreenStyles = StyleSheet.create({
         marginTop: 12,
         marginBottom: 20, 
         borderWidth: 1, 
-        padding: 10,
+        ...styles.input
     },
 });

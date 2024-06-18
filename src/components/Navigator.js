@@ -4,7 +4,6 @@ import LoginScreen from '../screens/LoginScreen';
 import SignupScreen from '../screens/SignupScreen';
 import SplashScreen from '../screens/SplashScreen'; 
 import MakePostScreen from '../screens/MakePostScreen';
-import ProfileScreen from '../screens/ProfileScreen';
 import UserContext from './UserContext';
 import HomePostNavigator from './HomePostNavigator';
 import { useEffect, useState } from 'react';
@@ -15,6 +14,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { doc, getDoc } from "firebase/firestore";
 import Icon from 'react-native-vector-icons/FontAwesome6';
 import ProfileCatsNavigator from './ProfileCatsNavigator';
+import DailyCatFactScreen from '../screens/DailyCatFactScreen';
 
 const AuthStack = createStackNavigator();
 
@@ -57,13 +57,26 @@ export default function Navigator(){
       <UserContext.Provider value={{username: username, pfp: pfp, uid: user}}>
         <NavigationContainer>
           <AppStack.Navigator
-          screenOptions={{headerShown: false}}>
+          screenOptions={({route}) => ({
+            headerShown: false, 
+            tabBarStyle: {
+              backgroundColor: '#6B26AF', 
+              height: 64,
+              borderTopRightRadius: 20, 
+              borderTopLeftRadius: 20,
+              paddingBottom: 5, 
+            },
+            tabBarActiveTintColor: '#F6AFEB',
+            tabBarInactiveTintColor: '#B16BCD'
+          })}>
             <AppStack.Screen name = "Home" component={HomePostNavigator} 
-            options={{tabBarIcon: ({color, size}) => (<Icon name="house" size={20} />)}}/>
+            options={{tabBarIcon: ({color, size}) => (<Icon name="house" size={20} color='#F6AFEB' />)}}/>
             <AppStack.Screen name = "Post" component={MakePostScreen} 
-            options={{tabBarIcon: ({color, size}) => (<Icon name="plus" size={20} />)}}/>
+            options={{tabBarIcon: ({color, size}) => (<Icon name="plus" size={20} color='#F6AFEB' />)}}/>
             <AppStack.Screen name = "Profile" component={ProfileCatsNavigator} 
-            options={{tabBarIcon: ({color, size}) => (<Icon name="shield-cat" size={20} />)}}/>
+            options={{tabBarIcon: ({color, size}) => (<Icon name="shield-cat" size={20} color='#F6AFEB' />)}}/>
+            <AppStack.Screen name = "Daily Cat Fact" component={DailyCatFactScreen} 
+            options={{tabBarIcon: ({color, size}) => (<Icon name="cat" size={20} color='#F6AFEB' />)}}/>
           </AppStack.Navigator>
         </NavigationContainer>
       </UserContext.Provider>
@@ -72,9 +85,7 @@ export default function Navigator(){
     return (
       <NavigationContainer>
         <AuthStack.Navigator
-        screenOptions={{
-          headerTransparent: true, 
-        }}>
+        screenOptions={{headerTitle: "", headerTransparent: true}}>
           <AuthStack.Screen name = "Splash" component={SplashScreen} />
           <AuthStack.Screen name = "Login" component={LoginScreen} />
           <AuthStack.Screen name = "Sign Up" component={SignupScreen}/>

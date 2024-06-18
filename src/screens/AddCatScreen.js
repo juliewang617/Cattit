@@ -1,10 +1,10 @@
 import { Text, SafeAreaView, View, Pressable, StyleSheet, TextInput, Image } from "react-native"; 
 import * as ImagePicker from 'expo-image-picker'; 
-import { setDoc, doc, collection, addDoc } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import { useContext, useState } from 'react';
 import { db } from "../utilities/config";
 import UserContext from "../components/UserContext";
-import styles from "/Users/juliewang/Desktop/projects/react-native-projects/Cattit/src/utilities/Style.js"; 
+import styles from "/Users/juliewang/Desktop/projects/react-native/Cattit/src/utilities/Style.js"; 
 import { FlatList } from "react-native";
 
 export default function AddCatScreen({navigation}){
@@ -71,12 +71,12 @@ export default function AddCatScreen({navigation}){
     }
 
     return(
-        <SafeAreaView style={homeScreenStyles.container}>
+        <SafeAreaView style={addCatScreenStyles.container}>
             <View>
-                <Image src={image} style={homeScreenStyles.image} />
+                <Image src={image} style={addCatScreenStyles.image} />
 
                 {albumImages.length != 0 && 
-                <View style={homeScreenStyles.albumImagesSection}>
+                <View style={addCatScreenStyles.albumImagesSection}>
                     <FlatList 
                     horizontal={true}
                     data={albumImages}
@@ -91,29 +91,30 @@ export default function AddCatScreen({navigation}){
                     ItemSeparatorComponent={<View style={{width: 20}} />}/>
                 </View>}
 
-                <View style={homeScreenStyles.inputContainer}>
-                    <Text>Name</Text>
-                    <TextInput style={homeScreenStyles.nameInput}
+                <View style={addCatScreenStyles.inputContainer}>
+                    <Text style={styles.text}>Name</Text>
+                    <TextInput style={addCatScreenStyles.nameInput}
                     onChangeText={setName}
                     value = {name} 
                     maxLength={50}
                     placeholder="Kiddo"/>
 
-                    <Text>Details</Text>
-                    <TextInput style={homeScreenStyles.detailsInput}
+                    <Text style={styles.text}>Details</Text>
+                    <TextInput style={addCatScreenStyles.detailsInput}
                     onChangeText={setDetails}
                     value={details}
                     maxLength={200}
+                    multiline={true}
                     placeholder="Age: 10, loves to eat grass" />
                 </View>
 
-                <View style={homeScreenStyles.inLineButtonRow}>
-                    <Pressable style={homeScreenStyles.inLineButton} onPress={handleUploadProfileImage}> 
-                        <Text style={homeScreenStyles.inLineButtonText}>Upload profile image</Text>
+                <View style={addCatScreenStyles.inLineButtonRow}>
+                    <Pressable style={addCatScreenStyles.inLineButton} onPress={handleUploadProfileImage}> 
+                        <Text style={styles.text}>Upload profile image</Text>
                     </Pressable>
 
-                    <Pressable style={homeScreenStyles.inLineButton} onPress={handleUploadAlbumImage}> 
-                        <Text style={homeScreenStyles.inLineButtonText}>Upload album image</Text>
+                    <Pressable style={addCatScreenStyles.inLineButton} onPress={handleUploadAlbumImage}> 
+                        <Text style={styles.text}>Upload album image</Text>
                     </Pressable>
                 </View>
                 
@@ -127,7 +128,7 @@ export default function AddCatScreen({navigation}){
     )
 }
 
-const homeScreenStyles = StyleSheet.create({
+const addCatScreenStyles = StyleSheet.create({
     container: {
       alignItems: 'center',
       justifyContent: 'center',
@@ -145,7 +146,7 @@ const homeScreenStyles = StyleSheet.create({
         marginBottom: 20, 
         alignSelf: 'center', 
         borderRadius: 10, 
-        backgroundColor: 'lightgray', 
+        backgroundColor: '#FFD7E7', 
     },
     nameInput: {
         height: 40, 
@@ -153,19 +154,19 @@ const homeScreenStyles = StyleSheet.create({
         marginTop: 12, 
         marginBottom: 12,
         borderWidth: 1, 
-        padding: 10
+        ...styles.input
     },
     detailsInput: {
         height: 90, 
         width: 'auto', 
         marginTop: 12,
         borderWidth: 1, 
-        padding: 10,
+        ...styles.input
     },
     albumImagesSection: {
         width: 'full',
         height: 100,
-        backgroundColor: 'lightgray',
+        backgroundColor: '#FFD7E7',
         padding: 10,
         borderRadius: 10
     },
@@ -175,17 +176,8 @@ const homeScreenStyles = StyleSheet.create({
         justifyContent: 'space-evenly',
     },
     inLineButton: {
-        borderRadius: 10, 
         marginLeft: 10,
         marginRight: 10,
-        width: 150, 
-        padding: 5, 
-        alignItems: 'center', 
-        borderWidth: 1,
-        alignSelf: 'center',
-        marginBottom: 10,
+        ...styles.pinkButton
     },
-    inLineButtonText:{
-        color: 'black'
-    }
 });
