@@ -1,20 +1,20 @@
 import * as React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import LoginScreen from '../screens/LoginScreen';
-import SignupScreen from '../screens/SignupScreen';
-import SplashScreen from '../screens/SplashScreen'; 
-import MakePostScreen from '../screens/MakePostScreen';
-import UserContext from './UserContext';
+import LoginScreen from '../../screens/LoginScreen';
+import SignupScreen from '../../screens/SignupScreen';
+import SplashScreen from '../../screens/SplashScreen'; 
+import MakePostScreen from '../../screens/MakePostScreen';
+import UserContext from '../contexts/UserContext';
 import HomePostNavigator from './HomePostNavigator';
 import { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { onAuthStateChanged } from "firebase/auth";
-import { auth, db } from '../utilities/config';
+import { auth, db } from '../../utilities/config';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { doc, getDoc } from "firebase/firestore";
 import Icon from 'react-native-vector-icons/FontAwesome6';
 import ProfileCatsNavigator from './ProfileCatsNavigator';
-import DailyCatFactScreen from '../screens/DailyCatFactScreen';
+import DailyCatFactScreen from '../../screens/DailyCatFactScreen';
 
 const AuthStack = createStackNavigator();
 

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import ProfileScreen from '../screens/ProfileScreen';
-import AddCatScreen from '../screens/AddCatScreen';
-import CatScreen from '../screens/CatScreen';
+import ProfileScreen from '../../screens/ProfileScreen';
+import AddCatScreen from '../../screens/AddCatScreen';
+import CatScreen from '../../screens/CatScreen';
 
 const ProfileCatsStack = createStackNavigator();
 

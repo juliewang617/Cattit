@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import HomeScreen from '../screens/HomeScreen';
-import UserContext from './UserContext';
+import HomeScreen from '../../screens/HomeScreen';
+import UserContext from '../contexts/UserContext';
 import { useContext } from 'react';
-import PostScreen from '../screens/PostScreen';
-import CommenterContext from './CommenterContext';
-import OtherProfileScreen from '../screens/OtherProfileScreen';
-import CatScreen from '../screens/CatScreen';
+import PostScreen from '../../screens/PostScreen';
+import CommenterContext from '../contexts/CommenterContext';
+import OtherProfileScreen from '../../screens/OtherProfileScreen';
+import CatScreen from '../../screens/CatScreen';
 
 const HomePostStack = createStackNavigator();
 
