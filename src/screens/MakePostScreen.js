@@ -112,6 +112,9 @@ export default function MakePostScreen({ navigation }) {
   );
 }
 
+/**
+ * Styles
+ */
 const homeScreenStyles = StyleSheet.create({
   container: {
     alignItems: "center",
